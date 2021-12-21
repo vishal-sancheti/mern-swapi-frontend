@@ -78,17 +78,41 @@ export default function Person() {
                                             <th>Language</th>
                                         </tr>
                                         </thead>
+                                        <tbody>
+                                        {data.species.length && data.species.map(function(s){
+                                            return(
+                                                <tr>
+                                                    <td>s.name</td>
+                                                    <td>s.average_lifespan</td>
+                                                    <td>s.classification</td>
+                                                    <td>s.language</td>
+                                                </tr>
+                                            )
+                                        })}
+                                        </tbody>
                                     </Table>
                                     <h4>Films</h4>
                                     <Table striped bordered>
                                         <thead>
                                         <tr>
-                                            <th>Tile</th>
+                                            <th>Title</th>
                                             <th>Director</th>
                                             <th>Producers</th>
                                             <th>Release Date</th>
                                         </tr>
                                         </thead>
+                                        <tbody>
+                                        {data.films.length && data.films.map(function(f){
+                                            return(
+                                                <tr>
+                                                    <td>{f.title}</td>
+                                                    <td>{f.director}</td>
+                                                    <td>{f.producer}</td>
+                                                    <td>{f.release_date}</td>
+                                                </tr>
+                                            )
+                                        })}
+                                        </tbody>
                                     </Table>
                                     <h4>Home Planet</h4>
                                     <Table striped bordered>
@@ -99,6 +123,15 @@ export default function Person() {
                                             <th>Population</th>
                                         </tr>
                                         </thead>
+                                        <tbody>
+                                        {data.homeworld &&
+                                            <tr>
+                                                <td>{data.homeworld.name}</td>
+                                                <td>{data.homeworld.terrain}</td>
+                                                <td>{data.homeworld.population}</td>
+                                            </tr>
+                                        }
+                                        </tbody>
                                     </Table>
                                 </div>
                                 }
