@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {Container, Card, Row, Col, ButtonGroup, Button} from "react-bootstrap";
 
 
 import AppNavbar from "../partials/AppNavbar";
 import peopleService from '../services/peopleService'
 
-export default function People(props) {
+export default function People() {
     const location = useLocation();
     const urlParams = new URLSearchParams(location.search);
     const page = urlParams.get('page');
