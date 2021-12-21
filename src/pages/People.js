@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import {Container, Card, Row, Col} from "react-bootstrap";
+import { useParams, useLocation } from "react-router-dom";
+import {Container, Card, Row, Col, ButtonGroup, Button} from "react-bootstrap";
+
 
 import AppNavbar from "../partials/AppNavbar";
 import peopleService from '../services/peopleService'
 
-export default function People() {
+export default function People(props) {
+    const location = useLocation();
+    const urlParams = new URLSearchParams(location.search);
+    const page = urlParams.get('page');
+
     const [data, setData] = useState(null);
     useEffect(() => {
-        peopleService.list().then(res => {
-            console.log(res.message);
+        peopleService.list({page: page}).then(res => {
             if(res.success){
                 setData(res.data);
             }
@@ -40,6 +45,14 @@ export default function People() {
                                     </Col>
                                 );
                             })}
+                        </Row>
+                        <Row className="justify-content-center">
+                            {data &&
+                            <ButtonGroup>
+                                <Button  variant="outline-primary" href={data.previous} disabled={!data.previous}>Prev</Button>
+                                <Button variant="outline-primary" href={data.next} disabled={!data.next}>Next</Button>
+                            </ButtonGroup>
+                            }
                         </Row>
                     </Container>
                 </div>

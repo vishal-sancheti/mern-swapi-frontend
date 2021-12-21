@@ -8,7 +8,7 @@ export default function AppNavbar(){
                     Home
                 </Navbar.Brand>
                 <Nav className="ml-auto">
-                    <Nav.Link href="people">
+                    <Nav.Link href="/people">
                         People
                     </Nav.Link>
                 </Nav>
