@@ -10,12 +10,13 @@ export default function People() {
     const location = useLocation();
     const urlParams = new URLSearchParams(location.search);
     const page = urlParams.get('page');
-
+    const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState(null);
     useEffect(() => {
         peopleService.list({page: page}).then(res => {
             if(res.success){
                 setData(res.data);
+                setLoading(false);
             }
         });
     },[]);
@@ -30,6 +31,11 @@ export default function People() {
                         <Row>
                             <Col>
                                 <h1>People form Star Wars</h1>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                {isLoading && "Loading..."}
                             </Col>
                         </Row>
                         <Row>

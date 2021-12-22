@@ -8,12 +8,14 @@ import {Col, Row, Table} from "react-bootstrap";
 
 export default function Person() {
     const params = useParams();
+    const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState(null);
     useEffect(() => {
         peopleService.get(params.id).then(res => {
             console.log(res.message);
             if(res.success){
                 setData(res.data);
+                setLoading(false);
             }
         });
     },[]);
@@ -31,6 +33,11 @@ export default function Person() {
                             </Col>
                         </Row>
                         <hr/>
+                        <Row>
+                            <Col>
+                                {isLoading && "Loading..."}
+                            </Col>
+                        </Row>
                         <Row>
                             <Col md="8" className="mx-auto">
                                 {data &&
@@ -82,10 +89,10 @@ export default function Person() {
                                         {data.species && data.species.map(function(s){
                                             return(
                                                 <tr>
-                                                    <td>s.name</td>
-                                                    <td>s.average_lifespan</td>
-                                                    <td>s.classification</td>
-                                                    <td>s.language</td>
+                                                    <td>{s.name}</td>
+                                                    <td>{s.average_lifespan}</td>
+                                                    <td>{s.classification}</td>
+                                                    <td>{s.language}</td>
                                                 </tr>
                                             )
                                         })}
