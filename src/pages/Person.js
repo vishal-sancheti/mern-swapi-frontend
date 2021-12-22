@@ -36,7 +36,7 @@ export default function Person() {
                                 {data &&
                                 <div>
                                     <h4>Personal Details</h4>
-                                    <Table striped bordered>
+                                    <Table striped bordered className="bg-white">
                                         <tbody>
                                         <tr>
                                             <th>Name</th>
@@ -69,7 +69,7 @@ export default function Person() {
                                         </tbody>
                                     </Table>
                                     <h4>Species</h4>
-                                    <Table striped bordered>
+                                    <Table striped bordered className="bg-white">
                                         <thead>
                                         <tr>
                                             <th>Name</th>
@@ -79,7 +79,7 @@ export default function Person() {
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {data.species.length && data.species.map(function(s){
+                                        {data.species && data.species.map(function(s){
                                             return(
                                                 <tr>
                                                     <td>s.name</td>
@@ -92,7 +92,7 @@ export default function Person() {
                                         </tbody>
                                     </Table>
                                     <h4>Films</h4>
-                                    <Table striped bordered>
+                                    <Table striped bordered className="bg-white">
                                         <thead>
                                         <tr>
                                             <th>Title</th>
@@ -115,7 +115,7 @@ export default function Person() {
                                         </tbody>
                                     </Table>
                                     <h4>Home Planet</h4>
-                                    <Table striped bordered>
+                                    <Table striped bordered className="bg-white">
                                         <thead>
                                         <tr>
                                             <th>Title</th>
